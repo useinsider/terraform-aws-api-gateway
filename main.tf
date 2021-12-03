@@ -290,3 +290,12 @@ resource "aws_api_gateway_api_key" "default" {
   enabled     = length(var.enableds) > 0 ? element(var.enableds, count.index) : true
   value       = length(var.values) > 0 ? element(var.values, count.index) : null
 }
+
+resource "aws_route53_record" "default" {
+  count   = var.route53 ? 1 : 0
+  zone_id = var.dns_zone_id
+  name    = format("%s%s%s", var.hostname, var.delimiter, (count.index))
+  type    = var.type
+  ttl     = var.ttl
+  records = [element(aws_api_gateway_resource.default.*.id, count.index)]
+}

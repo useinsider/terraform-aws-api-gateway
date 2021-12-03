@@ -574,3 +574,49 @@ variable "model_schemas" {
   default     = []
   description = "The schema of the model in a JSON form."
 }
+
+variable "route53" {
+  type        = bool
+  default     = false
+  description = "Flag to control the instance creation."
+}
+
+variable "dns_enabled" {
+  type        = bool
+  default     = false
+  description = "Flag to control the dns_enable."
+}
+
+
+variable "dns_zone_id" {
+  type        = string
+  default     = "Z1XJD7SSBKXLC1"
+  description = "The Zone ID of Route53."
+  sensitive   = true
+}
+
+variable "hostname" {
+  type        = string
+  default     = ""
+  description = "DNS records to create."
+  sensitive   = true
+}
+
+variable "delimiter" {
+  type        = string
+  default     = "-"
+  description = "Delimiter to be used between `organization`, `environment`, `name` and `attributes`."
+}
+
+variable "type" {
+  type        = string
+  default     = "CNAME"
+  description = "Type of DNS records to create."
+}
+
+variable "ttl" {
+  type        = string
+  default     = "300"
+  description = "The TTL of the record to add to the DNS zone to complete certificate validation."
+}
+
