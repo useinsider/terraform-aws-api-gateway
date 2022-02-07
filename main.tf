@@ -31,7 +31,8 @@ resource "aws_api_gateway_rest_api" "default" {
 
   endpoint_configuration {
     types            = var.types
-    vpc_endpoint_ids = var.vpc_endpoint_ids
+    # the following parameter is commented out due to this https://github.com/clouddrove/terraform-aws-api-gateway/issues/24
+    #vpc_endpoint_ids = var.vpc_endpoint_ids
   }
   policy = var.api_policy
   tags   = var.tags
