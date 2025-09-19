@@ -15,7 +15,7 @@ jobs:
           app-id: ${{ secrets.InsiderActionsApplication_APP_ID }}
           private-key: ${{ secrets.InsiderActionsApplication_PRIVATE_KEY }}
       - name: Checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v4
       - name: Set up Python 3.7
         uses: actions/setup-python@v2
         with:
